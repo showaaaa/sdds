@@ -1,0 +1,30 @@
+{% extends "ride/base.html" %}
+<!-- <h1>Ride Home2</h1>
+
+{% if title %}
+    <title>Ride - {{title}}</title>
+{% else %}
+    <title>Ride - no title</title>
+{% endif %} -->
+
+{% block content %}   
+    <!-- <h1>{{ ride.destination }}</h1>
+    <p>{{ ride.numberpassengers }} passengers on {{ ride.date }}</p> -->
+    <article class="media content-section">
+        <!-- <img class="rounded-circle article-img" src="{{ object.author.profile.image.url}}"> -->
+        <div class="media-body">
+            <div class="article-metadata">
+            <a class="mr-2" href="#">{{ object.destAddr }}</a>
+            <small class="text-muted">{{ object.date }}</small>
+            {% if object.rideOwner == user %}
+                <div>
+                    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'ride-update' object.id %}">Edit Ride Request</a>
+                    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'ride-delete' object.id %}">Delete Ride Request</a>
+                </div>             
+            {% endif %}
+            </div>
+            <h2 class="article-title">{{ object.numPeople }}</h2>
+            <!-- <p class="article-content">{{ object.content }}</p> -->
+        </div>
+    </article>  
+{% endblock content %}
